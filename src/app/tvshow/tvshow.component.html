@@ -1,0 +1,57 @@
+<div class="container-fluid main-header">
+    <div class="d-flex">
+        <!-- <div class="p-2 flex-fill"><span class="h2">TV Maze</span></div> -->
+        <div class="p-2 flex-fill"><img style="width: 150px" src="https://static.tvmaze.com/images/tvm-header-logo.png"
+                class="p-2" alt=""></div>
+        <div class="p-2 flex-fill "><span class="float-end h4">
+                <div class="d-flex flex-column">
+                    <div class="p-2">Welcome, {{user.name}}</div>
+                    <div class="pt-1"><span class="float-end"><button type="button" class="btn btn-light btn-sm"
+                                (click)="logout()">Logout</button></span></div>
+                </div>
+            </span></div>
+    </div>
+</div>
+<div class="container-fluid mt-3">
+    <div class="row">
+        <div class="col-lg-2 col-md-2 col-2">
+            <ul class="nav flex-column">
+                <li class="nav-item" style="background-color: #3f3f3f; color: white; padding: 10px;">
+                    <a class="" aria-current="page">Show Recommendations</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active cursor" aria-current="page"
+                        (click)="navigateToRecommednationGenre()">Genre</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active cursor" aria-current="page" (click)="navigateToOnlyRecommended()">Show
+                        History</a>
+                </li>
+            </ul>
+        </div>
+        <div class="col-lg-10 col-md-10 col-10">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+
+</div>
+
+
+<!-- <div class="wrapper">
+    <nav id="sidebar">
+        <ul class="list-unstyled components" id="main-menu-item">
+            <li>
+                <a class="menu-item" routerLink="" 
+                    >All Shows</a>
+            </li>
+            <li>
+                <a class="menu-item" routerLink="" 
+                    >Genre</a>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="container-fluid mt-2">
+        <router-outlet></router-outlet>
+    </div>
+</div> -->

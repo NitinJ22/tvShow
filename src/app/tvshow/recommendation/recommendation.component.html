@@ -1,0 +1,76 @@
+<div class="d-flex">
+    <div class="p-2 flex-fill "><span class="float-end">
+            <button type="button" class="btn btn-outline-warning btn-sm"(click)="resetRecommendation()">Reset Recommendation</button>
+        </span></div>
+</div>
+
+<div class="alert alert-success" role="alert" *ngIf="successMsg">
+    Recommedation History Reset
+</div>
+
+<div class="p-2" *ngIf="order=='genre'">
+    <button *ngFor="let genre of genreList" type="button" class="btn btn-outline-info btn-sm m-2"
+        (click)="getRecommendation(genre)">{{genre}}</button>
+</div>
+
+<div *ngIf="tvShowList.length!=0">
+    <p-table [value]="tvShowList" [lazy]="true" styleClass="p-datatable-responsive-demo" (onLazyLoad)="loadShows($event)"
+    [paginator]="true" [rows]="5" [showCurrentPageReport]="true" [lazyLoadOnInit]="false"
+    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [totalRecords]="totalRecord">
+
+    <!-- [columns]="cols" [value]="l03Response" styleClass="p-datatable-responsive-demo"
+                        id="webTable" class="p-shadow-2" [rows]="5" [showCurrentPageReport]="true"
+                        [paginator]="true"  [rowsPerPageOptions]="[5,10,15]"
+                        [lazy]="true" (onLazyLoad)="paginateL03($event)" 
+                        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                        [totalRecords]="totalRecordsl03" -->
+    <ng-template pTemplate="header">
+        <tr>
+            <th>Shows</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-col let-columns="columns">
+        <tr>
+            <td>
+                <!-- <div class="card mb-3">
+                    <img src="" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">{{col.name}}</h5>
+                        <p class="card-text">{{col.summary | summaryFilter}}</p>
+                        <p class="card-text"><small class="text-muted">{{col.image}}</small></p>
+                    </div>
+                </div> -->
+                <div class="card mb-3" >
+                    <!-- style="max-width: 540px;" -->
+                    <div class="row g-0">
+                      <div class="col-md-4">
+                        <img src="{{col.image.original}}" class="img-fluid rounded-start" alt="...">
+                      </div>
+                      <div class="col-md-8">
+                        <div class="card-body">
+                          <h5 class="card-title">{{col.name}}</h5>
+                          <p class="card-text">{{col.summary | summaryFilter}}</p>
+                          <div class="d-flex">
+                            <div class="p-2 flex-fill">{{col.language}}</div>
+                            <div class="p-2 flex-fill">{{col.type}}</div>
+                            <div class="p-2 flex-fill">Runtime: {{col.averageRuntime}}</div>
+                            <div class="p-2 flex-fill">Show Rating: {{col.rating.average}}</div>
+                          </div>
+                          <div class="d-flex">
+                            <div class="p-2 flex-fill">Genre: {{col.genres}}</div>
+                          </div>
+                          <!-- <p>OfficialSite: <a href="">{{}}</a></p> -->
+                          <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+            </td>
+        </tr>
+    </ng-template>
+</p-table>
+</div>
+
+
+<!-- <div>
+    </div> -->
